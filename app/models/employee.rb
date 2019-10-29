@@ -11,10 +11,12 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  location_id            :integer
 #
 # Indexes
 #
 #  index_employees_on_email                 (email) UNIQUE
+#  index_employees_on_location_id           (location_id)
 #  index_employees_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
@@ -26,4 +28,7 @@ class Employee < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true
+
+  belongs_to :location
+  has_one :company, through: :location
 end

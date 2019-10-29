@@ -16,4 +16,5 @@
 class Location < ApplicationRecord
   validates :name, presence: true
   belongs_to :company
+  has_many :employees
 end
