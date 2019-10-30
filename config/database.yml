@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: guess_who_production
-  username: guess_who
-  password: <%= ENV['GUESS_WHO_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
