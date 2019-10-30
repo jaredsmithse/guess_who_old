@@ -1,6 +1,6 @@
 <div class="row">
   <div class="ui top inverted menu">
     <a class="item" href="/">Home</a>
-    <a class="item right">Logout</a>
+    <%= link_to('Logout', destroy_employee_session_path, method: :delete, class: "item right") %>
   </div>
 </div>
