@@ -1,1 +1,22 @@
-Here is your homepage
+<div class="ui card">
+  <div class="image">
+    <img src="">
+  </div>
+  <div class="content">
+    <a class="header">Who is this?</a>
+    <div class="description">
+      <form class="ui form">
+        <div class="grouped fields">
+          <%- @guess_service.employees_to_guess.each do |employee| %>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="guess" value=<%= employee.id %>>
+                <label><%= employee.name %></label>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
