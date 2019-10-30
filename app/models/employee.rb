@@ -28,4 +28,7 @@ class Employee < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true
+
+  belongs_to :location, optional: true
+  has_one :company, through: :location
 end
