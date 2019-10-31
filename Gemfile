@@ -9,6 +9,7 @@ gem "aws-sdk-s3", require: false
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'jbuilder', '~> 2.7'
+gem 'omniauth-google-oauth2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5'
