@@ -29,13 +29,27 @@
 
 class Employee < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :confirmable, :lockable, :timeoutable, :trackable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
   validates :name, presence: true
   validates :email, presence: true
 
   belongs_to :location, optional: true
   has_one :company, through: :location
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |employee|
+      employee.email = auth.info.email
+      employee.expires = auth.credentials.expires
+      employee.expires_at = auth.credentials.expires_at
+      employee.google_profile_photo_url = auth.info.image
+      employee.name = auth.info.name
+      employee.refresh_token = auth.credentials.refresh_token
+      employee.password = Devise.friendly_token[0, 20]
+      employee.token = auth.credentials.token
+    end
+  end
 end
