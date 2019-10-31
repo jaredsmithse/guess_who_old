@@ -1,6 +1,6 @@
 <div class="ui card">
   <div class="image">
-    <img src="">
+    <img src="<%= @guess_service.correct_employee.google_profile_photo_url %>">
   </div>
   <div class="content">
     <a class="header">Who is this?</a>
@@ -10,7 +10,7 @@
           <%- @guess_service.employees_to_guess.each do |employee| %>
             <div class="field">
               <div class="ui radio checkbox">
-                <input type="radio" name="guess" value=<%= employee.id %>>
+                <input type="radio" name="guess" value="<%= employee.id %>">
                 <label><%= employee.name %></label>
               </div>
             </div>
