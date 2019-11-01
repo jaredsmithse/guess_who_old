@@ -1,7 +1,9 @@
 class HomeController < ApplicationController
-  before_action :authenticate_employee!
-
   def index
-    @guess_service = GuessService.new(current_employee)
+    if current_employee
+      redirect_to new_employee_guess_path(current_employee)
+    else
+      render layout: 'marketing'
+    end
   end
 end

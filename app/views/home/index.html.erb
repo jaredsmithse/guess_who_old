@@ -1,22 +1,87 @@
-<div class="ui card">
-  <div class="image">
-    <img src="<%= @guess_service.correct_employee.google_profile_photo_url %>">
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment">
+
+    <div class="ui text container">
+      <h1 class="ui inverted header">
+        GuessWho
+      </h1>
+      <h2>Get to know your colleagues</h2>
+      <a href="<%= omniauth_authorize_path(:employee, :google_oauth2) %>">
+        <button class="ui huge google plus button">
+          <i class="google icon"></i>
+          Sign in with Google
+          <i class="right arrow icon"></i>
+        </button>
+      </a>
+    </div>
+
   </div>
-  <div class="content">
-    <a class="header">Who is this?</a>
-    <div class="description">
-      <form class="ui form">
-        <div class="grouped fields">
-          <%- @guess_service.employees_to_guess.each do |employee| %>
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="guess" value="<%= employee.id %>">
-                <label><%= employee.name %></label>
-              </div>
-            </div>
-          <% end %>
+
+  <div class="ui vertical stripe segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+        <div class="eight wide column">
+          <h3 class="ui header">We Help Improve Companies' Culture</h3>
+          <p>Your employees know each other by name, helping to create a more inclusive environment.</p>
+          <h3 class="ui header">We Help Employees Make Real Connections</h3>
+          <p>You know longer have to ask for a name a second (or even first!) time. Get the name right before you even meet your coworkers.</p>
         </div>
-      </form>
+        <div class="six wide right floated column">
+          <img src="<%= image_path("avatar/steve.jpg") %>" class="ui large bordered rounded image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="ui vertical stripe quote segment">
+    <div class="ui equal width stackable internally celled grid">
+      <div class="center aligned row">
+        <div class="column">
+          <h3>"What a Service!"</h3>
+          <p>That is what they all say about us</p>
+        </div>
+        <div class="column">
+          <h3>"I'm known as the person that remembers everyone!"</h3>
+          <p>
+            <img src="<%= image_path("avatar/veronika.jpg") %>" class="ui avatar image">
+            <b>Veronika</b> Chief Fun Officer Acme Toys
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui inverted vertical footer segment">
+    <div class="ui container">
+      <div class="ui stackable inverted divided equal height stackable grid">
+        <div class="three wide column">
+          <h4 class="ui inverted header">About</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">Contact Us</a>
+            <a href="#" class="item">About Us</a>
+          </div>
+        </div>
+        <div class="three wide column">
+          <h4 class="ui inverted header">Services</h4>
+          <div class="ui inverted link list">
+            <a href="#" class="item">FAQ</a>
+            <a href="#" class="item">For Employees</a>
+            <a href="#" class="item">For Security Guards</a>
+            <a href="#" class="item">For Concierges</a>
+          </div>
+        </div>
+        <div class="seven wide column">
+          <h4 class="ui inverted header">Get Started Now!</h4>
+          <a href="<%= omniauth_authorize_path(:employee, :google_oauth2) %>">
+            <button class="ui google plus button">
+              <i class="google icon"></i>
+              Sign in with Google
+              <i class="right arrow icon"></i>
+            </button>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
