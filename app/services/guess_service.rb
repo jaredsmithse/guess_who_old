@@ -1,6 +1,7 @@
 class GuessService
-  def initialize(employee)
+  def initialize(employee, correct_employee = nil)
     @employee = employee
+    @correct_employee = correct_employee
   end
 
   def employees_to_guess

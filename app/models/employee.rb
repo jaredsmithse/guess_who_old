@@ -40,6 +40,7 @@ class Employee < ApplicationRecord
 
   belongs_to :location, optional: true
   has_one :company, through: :location
+  has_many :guesses
 
   before_create :set_company_id
 

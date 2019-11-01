@@ -1,0 +1,53 @@
+<div class="ui segment">
+  <%- if flash.key?(:success) %>
+    <div class="ui success message">
+      <p>Correct!</p>
+    </div>
+  <% end %>
+
+  <%- if flash.key?(:error) %>
+    <div class="ui error message">
+      <p><%= flash[:error] %></p>
+    </div>
+  <% end %>
+
+  <div class="ui two column very relaxed grid">
+    <div class="column">
+      <div class="ui card">
+        <div class="image">
+          <img src="<%= @guess_service.correct_employee.google_profile_photo_url %>">
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <%= form_for(@guess, url: employee_guesses_path, html: { class: "ui form" }) do |f| %>
+        <h2 class="ui teal header">Knock knock, who is it?</h2>
+        <input 
+          type="hidden" 
+          name="guess[correct_employee_id]" 
+          value="<%= @guess.correct_employee_id %>"
+        >
+        <div class="grouped fields">
+          <%- @guess_service.employees_to_guess.each do |employee| %>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input 
+                  required 
+                  type="radio" 
+                  name="guess[guessed_employee_id]" 
+                  value="<%= employee.id %>"
+                >
+                <label><%= employee.name %></label>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="actions">		
+          <button type="submit" class="ui primary button">Guess!</button>		
+        </div>
+      <% end %>
+    </div>
+    <div class="ui vertical divider">
+    </div>
+  </div>
+</div>
