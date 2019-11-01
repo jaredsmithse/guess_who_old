@@ -11,6 +11,7 @@
 
 class Company < ApplicationRecord
   validates :name, presence: true
+  validates :email_domain, presence: true, uniqueness: true
 
   has_many :locations
   has_many :employees, through: :locations

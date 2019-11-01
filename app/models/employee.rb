@@ -41,6 +41,8 @@ class Employee < ApplicationRecord
   belongs_to :location, optional: true
   has_one :company, through: :location
 
+  before_create :set_company_id
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |employee|
       employee.email = auth.info.email
@@ -52,5 +54,13 @@ class Employee < ApplicationRecord
       employee.password = Devise.friendly_token[0, 20]
       employee.token = auth.credentials.token
     end
+  end
+
+  def email_domain
+    @email_domain ||= email.split('@').last
+  end
+
+  private def set_company_id
+    write_attribute :company_id, Company.find_by(email_domain: email_domain)&.id
   end
 end
