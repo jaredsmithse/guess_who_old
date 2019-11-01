@@ -1,6 +1,10 @@
 class GuessesController < ApplicationController
   before_action :authenticate_employee!
 
+  def index
+    @stats = Guesses::Stats.new(current_employee)
+  end
+
   def new
     flash.keep
     @guess_service = GuessService.new(current_employee)

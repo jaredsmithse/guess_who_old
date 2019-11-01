@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   }
   root to: 'home#index'
   resources :employees do 
-    resources :guesses, only: [:new, :create]
+    resources :guesses, only: [:new, :create, :index]
   end
 end

@@ -1,0 +1,50 @@
+<div class="ui four statistics">
+  <div class="ui large statistic">
+    <div class="value">
+      <img src="<%= image_path("avatar/joe.jpg") %>" class="ui circular inline image">
+      <%= @stats.team_member_count %>
+    </div>
+    <div class="label">
+      Team Members
+    </div>
+  </div>
+
+  <div class="ui large teal statistic">
+    <div class="value">
+      <%= @stats.total_guesses %>
+    </div>
+    <div class="label">
+      Total Guesses
+    </div>
+  </div>
+  
+  <div class="ui large green statistic">
+    <div class="value">
+      <%= @stats.correct_guesses %>
+    </div>
+    <div class="label">
+      Correct Guesses
+    </div>
+  </div>
+  
+  <div class="ui large red statistic">
+    <div class="value">
+      <%= @stats.incorrect_guesses %>
+    </div>
+    <div class="label">
+      Incorrect Guesses
+    </div>
+  </div>
+</div>
+
+<div class="ui equal width stackable segment">
+  <h2 class="ui header">Overall Stats</h2>
+  <div class="ui grid">
+    <div class="five wide column">
+        <%= pie_chart @stats.overall_guesses_pie_chart_data, donut: true, width: "100%" %>
+    </div>
+    <div class="eleven wide floated right column">
+        <%= line_chart @stats.overall_guesses_line_chart_data, width: "100%" %>
+    </div>
+  </div>
+</div>
