@@ -19,6 +19,7 @@
 #  expires                  :boolean
 #  refresh_token            :string
 #  google_profile_photo_url :string
+#  company_id               :integer
 #
 # Indexes
 #
