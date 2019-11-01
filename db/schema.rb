@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_01_004308) do
+ActiveRecord::Schema.define(version: 2019_11_01_021927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_11_01_004308) do
     t.boolean "correct", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "correct_employee_id", null: false
     t.index ["employee_id"], name: "index_guesses_on_employee_id"
   end
 
