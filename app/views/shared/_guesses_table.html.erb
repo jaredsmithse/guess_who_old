@@ -1,0 +1,31 @@
+<table class="ui very basic collapsing celled table">
+  <thead>
+    <tr><th>Employee</th>
+    <th><%= label %> Guesses</th>
+  </tr></thead>
+  <tbody>
+    <% guesses.each do |employee, tally| %>
+      <tr>
+        <td>
+          <h4 class="ui image header">
+            <img 
+              src="<%= employee.google_profile_photo_url %>" 
+              class="ui mini rounded image"
+            >
+            <div class="content">
+              <%= employee.name %>
+              <%- if employee.location.present? %>
+                <div class="sub header">
+                  <%= employee.location.name %>
+                </div>
+              <% end %>
+            </div>
+          </h4>
+        </td>
+        <td>
+          <%= tally %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

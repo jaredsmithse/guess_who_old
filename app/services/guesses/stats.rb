@@ -24,6 +24,20 @@ module Guesses
       ]
     end
 
+    def correctly_guessed_employees
+      @correctly_guessed_employees ||= guesses.
+        correct.
+        group_by(&:correct_employee).
+        transform_values(&:count)
+    end
+
+    def incorrectly_guessed_employees
+      @incorrectly_guessed_employees ||= guesses.
+        incorrect.
+        group_by(&:correct_employee).
+        transform_values(&:count)
+    end
+
     def team_member_count
       @employee.company.employees.count
     end

@@ -48,3 +48,21 @@
     </div>
   </div>
 </div>
+<div class="ui equal width stackable segment">
+  <div class="ui two column very relaxed grid">
+    <div class="column">
+      <%= render(
+        "shared/guesses_table", 
+        label: "Correct",
+        guesses: @stats.correctly_guessed_employees, 
+      ) %>
+    </div>
+    <div class="column">
+      <%= render(
+        "shared/guesses_table", 
+        label: "Incorrect",
+        guesses: @stats.incorrectly_guessed_employees,
+      ) %>
+    </div>
+  </div>
+</div>
