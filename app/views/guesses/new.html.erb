@@ -13,11 +13,11 @@
 
   <div class="ui two column very relaxed grid">
     <div class="column">
-      <div class="ui card">
-        <div class="image">
-          <img src="<%= @guess_service.correct_employee.google_profile_photo_url %>">
-        </div>
-      </div>
+      <img 
+        id="guess-profile-image"
+        class="ui medium centered circular image" 
+        src="<%= @guess_service.correct_employee.google_profile_photo_url %>"
+      >
     </div>
     <div class="column">
       <%= form_for(@guess, url: employee_guesses_path, html: { class: "ui form" }) do |f| %>
