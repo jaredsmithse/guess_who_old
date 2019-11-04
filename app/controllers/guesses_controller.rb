@@ -13,7 +13,7 @@ class GuessesController < ApplicationController
   end
 
   def create
-    @guess = current_employee.guesses.create!(guess_params) do |guess| 
+    @guess = current_employee.guesses.create(guess_params) do |guess| 
       guess.correct = correct_guess?
     end
 
