@@ -39,7 +39,7 @@ class Employee < ApplicationRecord
   validates :email, presence: true
 
   belongs_to :location, optional: true
-  belongs_to :company
+  belongs_to :company, optional: true
   has_many :guesses
 
   before_create :set_company_id
