@@ -19,7 +19,7 @@ class Guess < ApplicationRecord
   validates :employee, presence: true
   validates :guessed_employee, presence: true
   validates :correct_employee, presence: true
-  validates :correct, presence: true
+  validates :correct, inclusion: { in: [true, false] }
 
   belongs_to :employee
   belongs_to :guessed_employee, foreign_key: :guessed_employee_id, class_name: 'Employee'
