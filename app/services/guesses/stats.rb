@@ -39,7 +39,8 @@ module Guesses
     end
 
     def team_member_count
-      @employee.company.employees.count
+      # all employees minus the team member we're creating the stats for
+      @employee.company.employees.count - 1
     end
 
     def total_guesses
