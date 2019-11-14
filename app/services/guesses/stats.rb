@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Guesses
   class Stats
     def initialize(employee)

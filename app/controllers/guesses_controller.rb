@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GuessesController < ApplicationController
   before_action :authenticate_employee!
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: employees
@@ -58,7 +60,7 @@ class Employee < ApplicationRecord
   end
 
   def email_domain
-    @email_domain ||= email.split('@').last
+    @email_domain ||= email.split("@").last
   end
 
   private def set_company_id

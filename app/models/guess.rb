@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: guesses
@@ -22,8 +24,8 @@ class Guess < ApplicationRecord
   validates :correct, inclusion: { in: [true, false] }
 
   belongs_to :employee
-  belongs_to :guessed_employee, foreign_key: :guessed_employee_id, class_name: 'Employee'
-  belongs_to :correct_employee, foreign_key: :correct_employee_id, class_name: 'Employee'
+  belongs_to :guessed_employee, foreign_key: :guessed_employee_id, class_name: "Employee"
+  belongs_to :correct_employee, foreign_key: :correct_employee_id, class_name: "Employee"
 
   scope :correct, -> { where(correct: true) }
   scope :incorrect, -> { where(correct: false) }

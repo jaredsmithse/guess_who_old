@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GuessService
   def initialize(employee, correct_employee = nil)
     @employee = employee

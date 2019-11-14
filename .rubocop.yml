@@ -1,0 +1,30 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - script/**/*
+    - bin/**/*
+    - node_modules/**/*
+    - !ruby/regexp /old_and_unused\.rb$/
+  
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Layout/DotPosition: 
+  EnforcedStyle: trailing
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
