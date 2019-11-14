@@ -22,12 +22,18 @@
 #  refresh_token            :string
 #  google_profile_photo_url :string
 #  company_id               :integer
+#  position_id              :integer
+#  team_id                  :integer
+#  department_id            :integer
 #
 # Indexes
 #
+#  index_employees_on_department_id         (department_id)
 #  index_employees_on_email                 (email) UNIQUE
 #  index_employees_on_location_id           (location_id)
+#  index_employees_on_position_id           (position_id)
 #  index_employees_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_employees_on_team_id               (team_id)
 #
 
 class Employee < ApplicationRecord
@@ -40,8 +46,12 @@ class Employee < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
 
-  belongs_to :location, optional: true
   belongs_to :company, optional: true
+  belongs_to :department, optional: true
+  belongs_to :location, optional: true
+  belongs_to :position, optional: true
+  belongs_to :team, optional: true
+  
   has_many :guesses
 
   before_create :set_company_id
