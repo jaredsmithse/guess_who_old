@@ -1,8 +1,9 @@
 <div class="ui two column very relaxed grid">
   <div class="column">
     <h2 class="ui teal header">Edit Your Account</h2>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "ui form" }) do |f| %>		
-      <%= render "devise/shared/error_messages", resource: resource %>		
+    <%= form_for(current_employee, url: employee_path(current_employee), html: { method: :put, class: "ui form" }) do |f| %>				
+      <h3 class="ui grey header">General Info</h3>
+      
       <div class="field">		
         <%= f.label :email %><br />		
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>		
@@ -10,27 +11,29 @@
       
       <div class="field">		
         <%= f.label :name %><br />		
-        <%= f.email_field :name, autocomplete: "name" %>		
-      </div>	
+        <%= f.text_field :name, autocomplete: "name" %>		
+      </div>
+      
+      <h3 class="ui grey header">Company Info</h3>
+      <div class="field">		
+        <%= f.label :location %><br />	
+        <%= collection_select(:employee, :location_id, current_employee.company.locations, :id, :name) %>
+      </div>
 
       <div class="field">		
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />		
-        <%= f.password_field :password, autocomplete: "new-password" %>		
-        <% if @minimum_password_length %>		
-          <br />		
-          <em><%= @minimum_password_length %> characters minimum</em>		
-        <% end %>		
-      </div>		
+        <%= f.label :department %><br />		
+        <%= collection_select(:employee, :department_id, current_employee.company.departments, :id, :name) %>		
+      </div>
 
       <div class="field">		
-        <%= f.label :password_confirmation %><br />		
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>		
-      </div>		
+        <%= f.label :team %><br />		
+        <%= collection_select(:employee, :team_id, current_employee.company.teams, :id, :name) %>		
+      </div>
 
       <div class="field">		
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />		
-        <%= f.password_field :current_password, autocomplete: "current-password" %>		
-      </div>		
+        <%= f.label :position %><br />		
+        <%= collection_select(:employee, :position_id, current_employee.company.positions, :id, :name) %>		
+      </div>
 
       <div class="actions">		
         <%= f.submit "Update", class: "ui primary button" %>		
@@ -55,7 +58,7 @@
 </div>
 
 <div class="ui segment">
-  <%= link_to registration_path(resource_name), method: :delete do %>
+  <%= link_to registration_path(:employee), method: :delete do %>
     <button class="ui red button">
       Cancel my account
     </button>

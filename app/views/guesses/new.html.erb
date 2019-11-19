@@ -1,7 +1,7 @@
 <div class="ui segment">
   <%- if flash.key?(:success) %>
     <div class="ui success message">
-      <p>Correct!</p>
+      <p><%= flash[:success] %></p>
     </div>
   <% end %>
 
@@ -11,13 +11,18 @@
     </div>
   <% end %>
 
-  <div class="ui two column very relaxed grid">
+  <div class="ui three column very relaxed grid">
+    <div class="column">
+      <%= render "sidebar_filters" %>
+    </div>
+
     <div class="column">
       <img 
         class="ui medium centered circular image" 
         src="<%= @guess_service.correct_employee.google_profile_photo_url %>"
       >
     </div>
+    
     <div class="column">
       <%= form_for(@guess, url: employee_guesses_path, html: { class: "ui form" }) do |f| %>
         <h2 class="ui teal header">Knock knock, who is it?</h2>

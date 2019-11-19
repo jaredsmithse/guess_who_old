@@ -8,6 +8,7 @@ class GuessesController < ApplicationController
   end
 
   def new
+    debugger
     @guess_service = GuessService.new(current_employee)
     @guess = current_employee.guesses.build(
       correct_employee_id: @guess_service.correct_employee.id,

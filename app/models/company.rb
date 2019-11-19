@@ -16,6 +16,9 @@ class Company < ApplicationRecord
   validates :email_domain, presence: true, uniqueness: true
 
   has_many :locations
+  has_many :departments
+  has_many :teams
+  has_many :positions
   has_many :employees
 
   has_one_attached :logo
