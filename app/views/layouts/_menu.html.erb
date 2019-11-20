@@ -5,7 +5,7 @@
     </div>
     <a class="item" href="/">Home</a>
     <%= link_to('Stats', employee_guesses_path(current_employee), class: "item") %>
-    <%= link_to('Profile', edit_employee_registration_path(current_employee), class: "item") %>
+    <%= link_to('Profile', edit_employee_path(current_employee), class: "item") %>
     <%= link_to('Logout', destroy_employee_session_path, method: :delete, class: "item right") %>
   </div>
 </div>
