@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_01_021927) do
+ActiveRecord::Schema.define(version: 2019_11_20_035342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 2019_11_01_021927) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "departments", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_departments_on_company_id"
+  end
+
   create_table "employees", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -61,9 +69,16 @@ ActiveRecord::Schema.define(version: 2019_11_01_021927) do
     t.string "refresh_token"
     t.string "google_profile_photo_url"
     t.integer "company_id"
+    t.bigint "position_id"
+    t.bigint "team_id"
+    t.bigint "department_id"
+    t.date "expired_at"
+    t.index ["department_id"], name: "index_employees_on_department_id"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["location_id"], name: "index_employees_on_location_id"
+    t.index ["position_id"], name: "index_employees_on_position_id"
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+    t.index ["team_id"], name: "index_employees_on_team_id"
   end
 
   create_table "guesses", force: :cascade do |t|
@@ -84,6 +99,14 @@ ActiveRecord::Schema.define(version: 2019_11_01_021927) do
     t.index ["company_id"], name: "index_locations_on_company_id"
   end
 
+  create_table "positions", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_positions_on_company_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
@@ -91,6 +114,14 @@ ActiveRecord::Schema.define(version: 2019_11_01_021927) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_teams_on_company_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

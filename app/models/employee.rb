@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: employees
@@ -22,12 +21,19 @@
 #  refresh_token            :string
 #  google_profile_photo_url :string
 #  company_id               :integer
+#  position_id              :integer
+#  team_id                  :integer
+#  department_id            :integer
+#  expired_at               :date
 #
 # Indexes
 #
+#  index_employees_on_department_id         (department_id)
 #  index_employees_on_email                 (email) UNIQUE
 #  index_employees_on_location_id           (location_id)
+#  index_employees_on_position_id           (position_id)
 #  index_employees_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_employees_on_team_id               (team_id)
 #
 
 class Employee < ApplicationRecord
