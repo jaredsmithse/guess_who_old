@@ -3,6 +3,10 @@
 class EmployeesController < ApplicationController
   before_action :authenticate_employee!
 
+  def index
+    @employees = current_employee.company.employees
+  end
+
   def edit; end
 
   def update

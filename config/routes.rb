@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks"
   }
   root to: "home#index"
-  resources :employees, only: [:edit, :update] do 
+  resources :employees, only: [:index, :edit, :update] do 
     resources :guesses, only: [:new, :create, :index]
   end
 end

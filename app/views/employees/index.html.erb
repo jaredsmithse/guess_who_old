@@ -1,0 +1,18 @@
+<h2 class="ui teal header">People at <%= current_employee.company.name %></h2>
+<div class="ui four stackable cards">
+  <%- @employees.each do |employee| %>
+    <div class="card">
+      <div class="image">
+        <img src="<%= employee.google_profile_photo_url %>">
+      </div>
+      <div class="content">
+        <div class="header"><%= employee.name %></div>
+        <%- if employee.expired_at.present? %>
+          <div class="meta">
+            <p>Leaves on <%= employee.expired_at.strftime("%B %-d") %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
