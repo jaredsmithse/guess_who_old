@@ -1,7 +1,7 @@
 <div class="ui segment">
   <%- if flash.key?(:success) %>
     <div class="ui success message">
-      <p>Correct!</p>
+      <p><%= flash[:success] %></p>
     </div>
   <% end %>
 
