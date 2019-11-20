@@ -9,9 +9,12 @@ class GuessesController < ApplicationController
 
   def new
     @guess_service = GuessService.new(current_employee)
-    @guess = current_employee.guesses.build(
-      correct_employee_id: @guess_service.correct_employee.id,
-    )
+    
+    if @guess_service.correct_employee.present?
+      @guess = current_employee.guesses.build(
+        correct_employee_id: @guess_service.correct_employee.id,
+      )
+    end
   end
 
   def create
