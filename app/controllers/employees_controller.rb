@@ -23,6 +23,6 @@ class EmployeesController < ApplicationController
   private def employee_params
     params.
       require(:employee).
-      permit(:name, :email, :location_id, :department_id, :position_id, :team_id)
+      permit(:name, :email, :location_id, :expired_at)
   end
 end

@@ -9,7 +9,38 @@
       
       <div class="field">		
         <%= f.label :name %><br />		
-        <%= f.email_field :name, autocomplete: "name" %>		
+        <%= f.text_field :name, autocomplete: "name" %>		
+      </div>
+      
+      <h4 class="ui header">Leave Date</h4>
+      <div class="three fields">
+        
+        <div class="field">
+          <label>Year</label>
+          <%= select_year(
+            (current_employee.expired_at&.year || Date.today.year), 
+            prefix: :employee, 
+            field_name: "expired_at(1i)"
+          ) %>
+        </div>
+        
+        <div class="field">
+          <label>Month</label>
+          <%= select_month(
+            (current_employee.expired_at&.month || Date.today.month), 
+            prefix: :employee, 
+            field_name: "expired_at(2i)"
+          ) %>
+        </div>
+        
+        <div class="field">
+          <label>Day</label>
+          <%= select_day(
+            (current_employee.expired_at&.day || Date.today.day), 
+            prefix: :employee, 
+            field_name: "expired_at(3i)" 
+          ) %>
+        </div>
       </div>		
 
       <div class="actions">		
