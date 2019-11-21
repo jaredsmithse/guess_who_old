@@ -262,7 +262,8 @@ Devise.setup do |config|
   client_id = Rails.application.credentials.dig(:google, :client_id)
   client_secret = Rails.application.credentials.dig(:google, :secret)
   config.omniauth :google_oauth2, client_id, client_secret, {
-    scope: "userinfo.email,userinfo.profile"
+    prompt: "consent select_account",
+    scope: "userinfo.email,userinfo.profile",
   }
 
   # ==> Warden configuration
