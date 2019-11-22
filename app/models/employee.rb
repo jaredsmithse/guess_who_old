@@ -25,6 +25,7 @@
 #  team_id                  :integer
 #  department_id            :integer
 #  left_at                  :date
+#  about_me                 :text
 #
 # Indexes
 #
