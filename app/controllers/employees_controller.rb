@@ -27,6 +27,6 @@ class EmployeesController < ApplicationController
   private def employee_params
     params.
       require(:employee).
-      permit(:name, :email, :location_id, :left_at, :custom_profile_photo)
+      permit(:name, :email, :location_id, :left_at, :custom_profile_photo, :about_me)
   end
 end

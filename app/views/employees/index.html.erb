@@ -7,10 +7,22 @@
       </div>
       <div class="content">
         <div class="header"><%= employee.name %></div>
+        <div class="meta">
+          <p>Joined on <%= employee.created_at.strftime("%B %-d") %></p>
+        </div>
+        <div class="description">
+          <%- if employee.about_me.present? %>
+            <p><%= employee.about_me %></p>
+          <% else %>
+            <p>No Description available.</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="extra content">
         <%- if employee.left_at.present? %>
-          <div class="meta">
-            <p>Leaves on <%= employee.left_at.strftime("%B %-d") %></p>
-          </div>
+          <p>Here until <%= employee.left_at.strftime("%B %-d") %></p>
+        <% else %>
+          <p>Here until who knows..</p>
         <% end %>
       </div>
     </div>

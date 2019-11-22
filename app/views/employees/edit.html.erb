@@ -50,6 +50,11 @@
         <%= f.file_field :custom_profile_photo, id: "profile-photo-input" %>	
       </div>
 
+      <div class="field">		
+        <%= f.label :about_me %><br />		
+        <%= f.text_area :about_me %>
+      </div>
+
       <div class="actions">		
         <%= f.submit "Update", class: "ui primary button" %>		
       </div>		
