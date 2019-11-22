@@ -41,7 +41,14 @@
             field_name: "expired_at(3i)" 
           ) %>
         </div>
-      </div>		
+      </div>	
+
+      <div class="ui divider"></div>
+
+      <div class="field">
+        <label>Profile Photo</label>
+        <%= f.file_field :custom_profile_photo, id: "profile-photo-input" %>	
+      </div>
 
       <div class="actions">		
         <%= f.submit "Update", class: "ui primary button" %>		
@@ -51,7 +58,7 @@
   <div class="column">
     <div class="ui fluid card">
       <div class="image">
-        <img src="<%= current_employee.google_profile_photo_url %>">
+        <img src="<%= current_employee.profile_photo_url %>">
       </div>
       <div class="content">
         <strong class="ui header">Group:</strong>

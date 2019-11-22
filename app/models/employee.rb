@@ -42,6 +42,8 @@ class Employee < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
+  
+  has_one_attached :custom_profile_photo
 
   validates :name, presence: true
   validates :email, presence: true
@@ -62,6 +64,17 @@ class Employee < ApplicationRecord
       employee.refresh_token = auth.credentials.refresh_token
       employee.password = Devise.friendly_token[0, 20]
       employee.token = auth.credentials.token
+    end
+  end
+
+  def profile_photo_url
+    if custom_profile_photo.attached?
+      Rails.application.routes.url_helpers.rails_blob_path(
+        custom_profile_photo, 
+        only_path: true,
+      )
+    else 
+      google_profile_photo_url
     end
   end
 
