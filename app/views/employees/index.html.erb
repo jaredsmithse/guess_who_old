@@ -7,9 +7,9 @@
       </div>
       <div class="content">
         <div class="header"><%= employee.name %></div>
-        <%- if employee.expired_at.present? %>
+        <%- if employee.left_at.present? %>
           <div class="meta">
-            <p>Leaves on <%= employee.expired_at.strftime("%B %-d") %></p>
+            <p>Leaves on <%= employee.left_at.strftime("%B %-d") %></p>
           </div>
         <% end %>
       </div>

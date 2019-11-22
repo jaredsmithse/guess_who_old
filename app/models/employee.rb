@@ -24,7 +24,7 @@
 #  position_id              :integer
 #  team_id                  :integer
 #  department_id            :integer
-#  expired_at               :date
+#  left_at                  :date
 #
 # Indexes
 #
